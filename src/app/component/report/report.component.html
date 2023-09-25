@@ -1,0 +1,115 @@
+<section class="is-title-bar" >
+    <div
+      class="
+        flex flex-col
+        md:flex-row
+        items-center
+        justify-between
+        space-y-6
+        md:space-y-0
+      "
+    >
+      <ul>
+        <li>Virtue Management System</li>
+        <li>Attendance Report</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- <div style="width: 250px;">
+      <tui-input
+      [(ngModel)]="workingDays"
+      >Total Working Days
+      </tui-input>
+  </div>
+  <br> -->
+
+  <div class="card has-table table-properties">
+    <header class="card-header">
+      <p class="card-header-title">
+        Monthly Report
+      </p>
+      <div class="buttons right nowrap">
+        <b> Choose Month : </b>&nbsp;&nbsp;&nbsp;
+        <input type="month"  (change)="getDateFromCalender($event)">
+      </div>&nbsp;&nbsp;&nbsp;
+      <div class="buttons right nowrap">
+        <button
+          title="Generate Report"
+          class="button small blue"
+          data-target="sample-modal-2"
+          type="button"
+          (click)="report()"
+        >
+          Generate Monthly Report
+        </button>
+        </div>&nbsp;&nbsp;&nbsp;
+        <div class="buttons right nowrap">
+          <button
+            title="Download CSV File"
+            class="button small blue"
+            data-target="sample-modal-2"
+            type="button"
+            (click)="downloadFile()"
+          >
+            Download CSV File
+          </button>
+          </div>
+    </header>
+    <div class="card-content">
+      <table>
+        <thead>
+          <tr>
+            <th> Sr. No.</th>
+            <th> Profile Picture </th>
+            <th> Employee Id </th>
+            <th> Employee Name </th>
+            <th> Total Days </th>
+            <th> Total Working Days </th>
+            <th> Present </th>
+            <th> Work From Home (WFH) </th>
+            <th> Half-Day </th>
+            <th> Absent </th>
+            <th> Leave </th>
+            <!-- <th> Total Present </th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employeeList ; let i = index">
+            <td> {{i+1}} </td>
+            <td *ngIf="employee.imagePath"> <tui-avatar text="dmitry demensky" [avatarUrl]="employee.imagePath" size="l" class="tui-space_top-1" [rounded]="true" ></tui-avatar> </td>
+            <td > {{employee.employeeId}} </td>
+            <td > {{employee.firstName + ' ' + employee.lastName}} </td>
+            <td class="total-days-col" > {{totalNoOfDaysInMonth ? totalNoOfDaysInMonth : 0 }} </td>
+            <td class="working-days-col" > {{ (employee.present ? employee.present : 0) + (employee.wfh ? employee.wfh : 0) + ((employee.halfDay ? employee.halfDay : 0)/2) }} </td>
+            <td class="present-col"> {{employee.present ? employee.present : 0}} </td>
+            <td class="wfh-col"> {{employee.wfh ? employee.wfh : 0}} </td>
+            <td class="half-day-col"> {{employee.halfDay ? employee.halfDay : 0}} </td>
+            <td class="absent-col"> {{employee.absent ? employee.absent : 0 }} </td>
+            <td class="leave-col"> {{employee.leave ? employee.leave : 0}} </td>
+            <!-- <td >
+                <span class="total-col">
+                    <b>{{(employee.present ? employee.present : 0) - ( employee.absent ? employee.absent : 0 ) - ( employee.halfDay ? employee.halfDay : 0 ) - ( employee.leave ? employee.leave : 0 ) }}</b>
+                </span>
+             </td> -->
+            
+            <!-- <td class="actions-cell">
+              <div class="buttons right nowrap">
+                <button
+                  title="Edit Employee Attendance"
+                  class="button small green --jb-modal"
+                  data-target="sample-modal-2"
+                  type="button"
+                  (click)="editEmployeeAttendance(employee)"
+                >
+                  <span class="icon"
+                    ><i class="mdi mdi-square-edit-outline"></i
+                  ></span>
+                </button>
+              </div>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

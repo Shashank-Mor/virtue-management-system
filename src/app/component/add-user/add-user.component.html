@@ -1,0 +1,82 @@
+<!-- <div class="container">
+    <div style="text-align: center; margin :100px">
+    </div>
+    <div >
+      <form style="width: 300px; margin-left: 500px;" [formGroup]="myForm" (ngSubmit)="addUser()" >
+        <div class="form-group">
+          <tui-input formControlName="name" > User Name </tui-input>
+        </div>
+  
+        <div class="form-group" style="margin-top:10px;">
+          <tui-input-password class="b-form" formControlName="password" > Password </tui-input-password>
+        </div>
+        <div style="text-align: center; margin:17px 0;">
+          <button tuiButton type="submit" class="tui-space_right-3 tui-space_bottom-3" > Add User </button>
+        </div>
+      </form>
+    </div>
+  </div> -->
+  <form  [formGroup]="myForm" (ngSubmit)="addUser()" >
+  <div class="tui-row tui-row_adaptive tui-row_example tui-row_align_center">
+    <div class="tui-col_md-4 tui-col_lg-4">
+      <div class="dummy">
+        <tui-input formControlName="name" [(ngModel)]="userName" > User Name </tui-input>           
+      </div>
+    </div>
+    <div class="tui-col_md-4 tui-col_lg-4">
+      <div class="dummy">
+        <tui-input-password class="b-form" formControlName="password" [(ngModel)]="passWord" > Password </tui-input-password>      
+      </div>
+    </div>
+    <div class="tui-col_md-2 tui-col_lg-2">
+      <div class="dummy">
+        <button tuiButton type="submit" class="tui-space_right-3 tui-space_bottom-3" > Add User </button>       
+      </div>
+    </div>
+    <div class="tui-col_md-2 tui-col_lg-2">
+      <div class="dummy">
+        <button tuiButton type="button" class="tui-space_right-3 tui-space_bottom-3" (click)="update()" > Update </button>       
+      </div>
+    </div>
+  </div>
+  </form>
+  <br>
+  <br>
+
+  <div class="card has-table table-properties">
+    <header class="card-header">
+      <p class="card-header-title">
+        <!-- <span class="icon"><i class="mdi mdi-account-multiple"></i></span> -->
+        Users
+      </p>
+    </header>
+    <div class="card-content">
+      <table>
+        <thead>
+          <tr>
+            <th> User Name </th>
+            <!-- <th> Password </th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of list">
+            <td (dblclick)="getUserData(data)">{{data.email}}</td>
+            <!-- <td>{{data.password}}</td>     -->
+            <td>
+              <button
+                title="Delete User"
+                class="button small red"
+                data-target="sample-modal-2"
+                type="button"
+                (click)="deleteUser(data)"
+              >
+              Delete
+              </button>
+            </td>        
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+

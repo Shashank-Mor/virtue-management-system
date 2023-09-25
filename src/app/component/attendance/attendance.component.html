@@ -1,0 +1,123 @@
+<section class="is-title-bar" >
+    <div
+      class="
+        flex flex-col
+        md:flex-row
+        items-center
+        justify-between
+        space-y-6
+        md:space-y-0
+      "
+    >
+      <ul>
+        <li>Virtue Management System</li>
+        <li>Attendance</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Select Date : <input type="date"> -->
+
+  <div style="text-align: center;">
+    <!-- <tui-input-date
+          tuiUnfinishedValidator="Finish filling the field"
+          class="date"
+          (click)="fatchAttendanceStatus($event)"
+      >
+          Choose a date
+      </tui-input-date> -->
+      <!-- <tui-field-error formControlName="testValue"></tui-field-error> -->
+      <!-- <input type="date" (change)="fatchAttendanceStatus($event)" > -->
+  </div>
+
+  <br><br>
+
+  <div class="card has-table table-properties">
+    <header class="card-header">
+      <p class="card-header-title">
+        <!-- <span class="icon"><i class="mdi mdi-account-multiple"></i></span> -->
+        Attendance
+      </p>
+      <div class="buttons right nowrap">
+        <b> Choose Date : </b>&nbsp;&nbsp;&nbsp;
+        <input type="date" [min]="min" [max]="max" (change)="getDateFromCalender($event)">
+      </div>&nbsp;&nbsp;&nbsp;
+      <!-- <div class="buttons right nowrap">
+        <button
+          title="Generate Report"
+          class="button small blue"
+          data-target="sample-modal-2"
+          type="button"
+          (click)="report()"
+        >
+          Generate Report
+        </button>
+        </div>&nbsp;&nbsp;&nbsp;
+        <div class="buttons right nowrap">
+          <button
+            title="view Report"
+            class="button small blue"
+            data-target="sample-modal-2"
+            type="button"
+            (click)="viewReport()"
+          >
+            View Report
+          </button>
+          </div> -->
+    </header>
+    <div class="card-content">
+      <table>
+        <thead>
+          <tr>
+            <th> Sr. No.</th>
+            <th> Profile Picture </th>
+            <th> Employee Id </th>
+            <th> Employee Name </th>
+            <!-- <th> Status </th> -->
+            <!-- <th> Date </th> -->
+            <th> Time </th>
+            <th> Action </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employeeList ; let i = index">
+            <td> {{i+1}} </td>
+            <td *ngIf="employee.imagePath"> <tui-avatar text="dmitry demensky" [avatarUrl]="employee.imagePath" size="l" class="tui-space_top-1" [rounded]="true" ></tui-avatar> </td>
+            <td > {{employee.employeeId}}</td>
+            <td > {{employee.firstName + ' ' + employee.lastName}}</td>
+            <!-- <td> {{employee.status}} </td> -->
+            <!-- <td> {{employee.date}} </td> -->
+            <td> {{employee.time}} </td>
+            <td>
+              <tui-select 
+              tuiTextfieldSize="s"
+              [ngModel]="employee.status"
+              (ngModelChange)="statusOfEmployee($event , employee  )"  
+              >
+                Select
+                <tui-data-list-wrapper
+                    *tuiDataList
+                    [items]="attendance"
+                ></tui-data-list-wrapper>
+            </tui-select>
+            </td>
+            <!-- <td class="actions-cell">
+              <div class="buttons right nowrap">
+                <button
+                  title="Edit Employee Attendance"
+                  class="button small green --jb-modal"
+                  data-target="sample-modal-2"
+                  type="button"
+                  (click)="editEmployeeAttendance(employee)"
+                >
+                  <span class="icon"
+                    ><i class="mdi mdi-square-edit-outline"></i
+                  ></span>
+                </button>
+              </div>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

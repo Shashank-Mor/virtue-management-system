@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "test-firebase-d8469": {
+      "hosting": {
+        "attendance-management-system": [
+          "test-firebase-d8469"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "test-firebase-d8469"
+  }
+}

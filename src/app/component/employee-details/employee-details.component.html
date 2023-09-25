@@ -1,0 +1,285 @@
+<!-- <div style="margin-left: 550px;">
+    <div *ngIf="!employee.imagePath">
+        <img src="assets/images/no-data.png" height="150px" width="150px">
+    </div>
+    <div *ngIf="employee.imagePath">
+        <img [src]="employee.imagePath" height="150px" width="150px" >
+    </div>
+    <input type="file" (change)="chooseFile($event)" accept=".jpg" > 
+</div> -->
+
+<!-- <form (ngSubmit)="submit()"> -->
+
+    <section class="is-title-bar" >
+        <div
+          class="
+            flex flex-col
+            md:flex-row
+            items-center
+            justify-between
+            space-y-6
+            md:space-y-0
+          "
+        >
+          <ul>
+            <li>Virtue Management System</li>
+            <li>Employees Details</li>
+          </ul>
+        </div>
+      </section>
+
+    <section class="notification blue" >
+        <span class="icon"><i class="mdi mdi-buffer"></i></span>
+        <b class="organization-font-size">Basic Information</b>
+    </section>
+
+    <div class="tui-row tui-row_adaptive tui-row_example tui-row_align_center">
+        <div class="tui-col_md-3 tui-col_lg-3">
+            <div class="dummy">
+                <tui-input 
+                class="tui-space_top-3 tui-space_bottom-5" 
+                tuiTextfieldSize="m"
+                [(ngModel)]="employee.employeeId"
+                >
+                Employee Id
+            </tui-input>
+            </div>
+        </div>
+        <div class="tui-col_md-3 tui-col_lg-3">
+            <div class="dummy">
+                <tui-input 
+                class="tui-space_top-3 tui-space_bottom-5" 
+                tuiTextfieldSize="m"
+                [(ngModel)]="employee.firstName"
+                >
+                First Name
+            </tui-input>
+            </div>
+        </div>
+        <div class="tui-col_md-3 tui-col_lg-3">
+            <div class="dummy">
+                <tui-input 
+                class="tui-space_top-3 tui-space_bottom-5" 
+                tuiTextfieldSize="m"
+                [(ngModel)]="employee.lastName"
+                >Last Name
+            </tui-input>
+            </div>
+        </div>
+        <div class="tui-col_md-3 tui-col_lg-3">
+            <div class="dummy">
+                    <!-- <div *ngIf="!employee.imagePath">
+                        <img [src]="employee.imagePath" height="150px" width="150px">
+                    </div> -->
+                    <div *ngIf="employee.imagePath"  height="250px" width="150px">
+                        <img [src]="employee.imagePath" class="image-alignment"  (click)="handleClick()" >
+                    </div>
+                    <input type="file" class="hidden" id="upload" (change)="chooseFile($event)" accept=".jpg" >
+            </div>
+        </div>
+    </div>
+
+    <div class="tui-row tui-row_adaptive tui-row_example tui-row_align_center">
+        <div class="tui-col_md-3 tui-col_lg-3">
+            <div class="dummy">
+                <tui-input 
+                class="tui-space_top-3 tui-space_bottom-5" 
+                tuiTextfieldSize="m"
+                [(ngModel)]="employee.officialEmail"
+                >Official Email
+            </tui-input>
+            </div>
+        </div>
+        <div class="tui-col_md-3 tui-col_lg-3">
+            <div class="dummy">
+                <tui-input 
+                class="tui-space_top-3 tui-space_bottom-5" 
+                tuiTextfieldSize="m"
+                [(ngModel)]="employee.personnelEmail"
+                >
+                Personnel Email
+                </tui-input>
+            </div>
+        </div>
+        <div class="tui-col_md-3 tui-col_lg-3">
+            <div class="dummy">
+                <tui-input 
+                class="tui-space_top-3 tui-space_bottom-5" 
+                tuiTextfieldSize="m"
+                [(ngModel)]="employee.contactNo"
+                >
+                Contact No               
+            </tui-input>
+            </div>
+        </div>
+        <div class="tui-col_md-3 tui-col_lg-3">
+            <div class="dummy">
+                <tui-input 
+                class="tui-space_top-3 tui-space_bottom-5" 
+                tuiTextfieldSize="m"
+                [(ngModel)]="employee.emergencyContactNo"
+                >
+                Emergency Contact No
+            </tui-input>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <section class="notification blue" >
+            <span class="icon"><i class="mdi mdi-buffer"></i></span>
+            <b class="organization-font-size">Address Information</b>
+        </section>
+
+        <h2><b>Current Address</b></h2>
+    
+        <div class="tui-row tui-row_adaptive tui-row_example tui-row_align_center">
+            <div class="tui-col_md-4 tui-col_lg-4">
+                <div class="dummy">
+                    <tui-input 
+                    class="tui-space_top-3 tui-space_bottom-5" 
+                    tuiTextfieldSize="m"
+                    [(ngModel)]="employee.addressStreetNo"
+                    >Street No
+                </tui-input>
+                </div>
+            </div>
+            <div class="tui-col_md-4 tui-col_lg-4">
+                <div class="dummy">
+                    <tui-input 
+                    class="tui-space_top-3 tui-space_bottom-5" 
+                    tuiTextfieldSize="m"
+                    [(ngModel)]="employee.addressCity"
+                    >
+                    City
+                    </tui-input>
+                </div>
+            </div>
+            <div class="tui-col_md-4 tui-col_lg-4">
+                <div class="dummy">
+                    <tui-input 
+                    class="tui-space_top-3 tui-space_bottom-5" 
+                    tuiTextfieldSize="m"
+                    [(ngModel)]="employee.addressState"
+                    >
+                    State
+                    </tui-input>
+                </div>
+            </div>
+        </div>
+    
+        <div class="tui-row tui-row_adaptive tui-row_example tui-row_align_center">
+            <div class="tui-col_md-4 tui-col_lg-4">
+                <div class="dummy">
+                    <tui-input 
+                    class="tui-space_top-3 tui-space_bottom-5" 
+                    tuiTextfieldSize="m"
+                    [(ngModel)]="employee.addressPinCode"
+                    >Pin Code
+                </tui-input>
+                </div>
+            </div>
+            <div class="tui-col_md-4 tui-col_lg-4">
+                <div class="dummy">
+                    <tui-input 
+                    class="tui-space_top-3 tui-space_bottom-5" 
+                    tuiTextfieldSize="m"
+                    [(ngModel)]="employee.addressCountry"
+                    >
+                    Country
+                    </tui-input>
+                </div>
+            </div>
+        </div>
+
+        <h2>
+            <b>Permanent Address</b>&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" (click)="sameAddress()">&nbsp;&nbsp;Same as above
+        </h2>
+        
+        <div *ngIf="isSameAsAboveAddress == false">
+            <div class="tui-row tui-row_adaptive tui-row_example tui-row_align_center">
+                <div class="tui-col_md-4 tui-col_lg-4">
+                    <div class="dummy">
+                        <tui-input 
+                        class="tui-space_top-3 tui-space_bottom-5" 
+                        tuiTextfieldSize="m"
+                        [(ngModel)]="employee.permanentAddressStreetNo"
+                        >Street No
+                    </tui-input>
+                    </div>
+                </div>
+                <div class="tui-col_md-4 tui-col_lg-4">
+                    <div class="dummy">
+                        <tui-input 
+                        class="tui-space_top-3 tui-space_bottom-5" 
+                        tuiTextfieldSize="m"
+                        [(ngModel)]="employee.permanentAddressCity"
+                        >
+                        City
+                        </tui-input>
+                    </div>
+                </div>
+                <div class="tui-col_md-4 tui-col_lg-4">
+                    <div class="dummy">
+                        <tui-input 
+                        class="tui-space_top-3 tui-space_bottom-5" 
+                        tuiTextfieldSize="m"
+                        [(ngModel)]="employee.permanentAddressState"
+                        >
+                        State
+                        </tui-input>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="tui-row tui-row_adaptive tui-row_example tui-row_align_center">
+                <div class="tui-col_md-4 tui-col_lg-4">
+                    <div class="dummy">
+                        <tui-input 
+                        class="tui-space_top-3 tui-space_bottom-5" 
+                        tuiTextfieldSize="m"
+                        [(ngModel)]="employee.permanentAddressPinCode"
+                        >Pin Code
+                    </tui-input>
+                    </div>
+                </div>
+                <div class="tui-col_md-4 tui-col_lg-4">
+                    <div class="dummy">
+                        <tui-input 
+                        class="tui-space_top-3 tui-space_bottom-5" 
+                        tuiTextfieldSize="m"
+                        [(ngModel)]="employee.permanentAddressCountry"
+                        >
+                        Country
+                        </tui-input>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div style="text-align: center" *ngIf="!employee.id">
+        <button
+        class="button blue --jb-modal"
+        type="button"
+        (click)="submit()"
+      >
+        Submit
+      </button>
+    </div>
+    <div style="text-align: center" *ngIf="employee.id">
+        <button
+        class="button blue --jb-modal"
+        type="button"
+        (click)="update()"
+      >
+        Update
+      </button>
+    </div>
+<!-- </form> -->
+

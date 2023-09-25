@@ -1,0 +1,41 @@
+.total-days-col{
+    color: rgb(10, 111, 114);
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.working-days-col{
+    color: rgb(212, 70, 14);
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.present-col{
+    color: green;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.wfh-col{
+    color: rgb(189, 189, 24);
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.absent-col{
+    color: red;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.half-day-col{
+    color: rgb(25, 158, 147);
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.leave-col{
+    color: rgb(255, 0, 0);
+    font-weight: 800;
+    font-size: 15px;
+}

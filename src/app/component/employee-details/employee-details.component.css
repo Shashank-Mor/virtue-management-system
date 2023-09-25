@@ -1,0 +1,11 @@
+.hidden {
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+  }
+
+.image-alignment{
+    width: 160px;
+    height: 200px;
+    margin-left: 45px;
+}

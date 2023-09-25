@@ -1,0 +1,31 @@
+image: node:14.18
+
+pipelines:
+  branches:
+    virtue-attendance-management:
+    - step:
+        caches:
+          - node
+        script: 
+          - echo "Starting virtue attendance management build and deploy"
+          - npm install
+          - npm install -g @angular/cli
+          - npm install -g grunt  
+          - npm install -g grunt-war 
+          - ng build  --aot --base-href=/virtue-attendance-management/
+          - grunt war
+          - curl -ku $TOMCAT_USER:$TOMCAT_PASSWORD  -T superControlAdmin.war "https://tech.virtueanalytics.com/manager/text/deploy?path=/virtue-attendance-management&update=true"
+
+    SC-RV01:
+      - step:
+          caches:
+            - node
+          script: 
+            - echo "Starting super Control Admin build and deploy"
+            - npm install
+            - npm install -g @angular/cli
+            - npm install -g grunt  
+            - npm install -g grunt-war 
+            - ng build  --aot --base-href=/virtue-attendance-management/
+            - grunt war
+            - curl -ku $TOMCAT_USER:$TOMCAT_PASSWORD  -T superControlAdmin.war "https://tech.virtueanalytics.com/manager/text/deploy?path=/virtue-attendance-management&update=true"

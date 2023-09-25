@@ -1,0 +1,31 @@
+<div class="container">
+    <div style="text-align: center; margin :100px">
+      <!-- <h1><b>Attendance Management System</b></h1> -->
+    </div>
+    <div >
+      <form style="width: 300px; margin-left: 400px;" [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+        <div class="form-group">
+          <tui-input formControlName="name" > User Name </tui-input>
+        </div>
+  
+        <div class="form-group" style="margin-top:10px;">
+          <tui-input-password
+            class="b-form"
+            formControlName="password"
+          >
+            Password
+          </tui-input-password>
+        </div>
+        <div style="text-align: center; margin:17px 0;">
+          <button
+            tuiButton
+            type="submit"
+            class="tui-space_right-3 tui-space_bottom-3"
+          >
+            Log In
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,98 @@
+<section class="is-title-bar" >
+  <div
+    class="
+      flex flex-col
+      md:flex-row
+      items-center
+      justify-between
+      space-y-6
+      md:space-y-0
+    "
+  >
+    <ul>
+      <li>Virtue Management System</li>
+      <li>Employees List</li>
+    </ul>
+  </div>
+</section>
+
+<div class="card has-table table-properties">
+    <header class="card-header">
+      <p class="card-header-title">
+        <!-- <span class="icon"><i class="mdi mdi-account-multiple"></i></span> -->
+        Employees List
+      </p>
+      <div class="buttons right nowrap">
+        <button
+          title="Add Employee"
+          class="button small blue"
+          data-target="sample-modal-2"
+          type="button"
+          (click)="addEmployeeDetails()"
+        >Add Employee
+        </button>
+      </div>
+    </header>
+    <div class="card-content">
+      <table>
+        <thead>
+          <tr>
+            <th> Profile Picture </th>
+            <th> First Name </th>
+            <th> Last Name </th>
+            <th> Official Email </th>
+            <th> Phone No </th>
+            <th> Address </th>
+            <th> </th>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="IsLoadOrganization">
+          <tr *ngFor="let employee of employeeList">
+            <td *ngIf="employee.imagePath"> <tui-avatar text="dmitry demensky" [avatarUrl]="employee.imagePath" size="l" class="tui-space_top-1" [rounded]="true" ></tui-avatar> </td>
+            <!-- <td *ngIf="!employee.imagePath"> <tui-avatar text="dmitry demensky"  size="l" class="tui-space_top-1" [rounded]="true" ></tui-avatar> </td> -->
+            <!-- <td *ngIf="employee.imagePath"><img [src]="employee.imagePath" width="100px" height="100px"></td> --> 
+            <!-- <td *ngIf="!employee.imagePath"><img src="assets/images/no-data.png" width="100px" height="100px"></td> -->
+            <td > {{employee.firstName}}</td>
+            <td > {{employee.lastName}}</td>
+            <td > {{employee.officialEmail}}</td>
+            <td > {{employee.contactNo}}</td>
+            <td > {{employee.addressStreetNo + ' ' + employee.addressCity + ' ' + employee.addressState + ' ' + employee.addressPinCode + ' ' + employee.addressCountry }}</td>
+            <td>
+              <button
+                title="Delete Employee"
+                class="button small red"
+                data-target="sample-modal-2"
+                type="button"
+                (click)="deleteEmployee(employee)"
+              >
+              Delete
+              </button>
+            </td> 
+            <td class="actions-cell">
+              <div class="buttons right nowrap">
+                <button
+                  title="Edit Employee"
+                  class="button small green --jb-modal"
+                  data-target="sample-modal-2"
+                  type="button"
+                  (click)="editEmployee(employee)"
+                >
+                  <span class="icon"
+                    ><i class="mdi mdi-square-edit-outline"></i
+                  ></span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+
+      <ng-container *ngIf="IsLoadLoader">
+        <tui-loader [inheritColor]="true"> </tui-loader>
+      </ng-container>
+      
+    </div>
+  </div>
